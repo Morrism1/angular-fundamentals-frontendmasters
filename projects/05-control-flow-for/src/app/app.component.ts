@@ -6,31 +6,35 @@ import { Component } from '@angular/core';
   template: `
     <section class="container">
       <!-- This article element represents and entire listing -->
+      @for( item of carList; track item){
       <article class="listing">
         <div class="image-parent">
-          <img class="product-image" src="https://placehold.co/100x100" />
+          <img class="product-image" src="../assets/blue-car.jpeg" />
         </div>
         <section class="details">
-          <p class="title"><!-- car make and model--></p>
+          <p class="title">{{item.make}} {{item.model}}</p>
           <hr />
           <p class="detail">
             <span>Year</span>
-            <span><!-- year --></span>
+            <span>{{item.year}}</span>
           </p>
           <div class="detail">
             <span>Transmission</span>
-            <span><!-- transmission --></span>
+            <span>{{item.transmission}}</span>
           </div>
           <p class="detail">
             <span>Mileage</span>
-            <span><!-- miles --></span>
+            <span>{{item.miles}}</span>
           </p>
           <p class="detail">
             <span>Price</span>
-            <span><!-- price --></span>
+            <span>{{item.price}}</span>
           </p>
         </section>
       </article>
+      }@empty {
+        <p>No Car to Display</p>
+      }
     </section>
   `,
   styleUrl: 'app.component.css',
@@ -41,7 +45,7 @@ export class AppComponent {
       make: 'Foyoda',
       model: 'Famery',
       miles: 54354,
-      price: 1000,
+      price: 10000,
       year: 2022,
       transmission: 'Automatic',
     },
